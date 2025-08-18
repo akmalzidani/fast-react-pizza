@@ -11,7 +11,6 @@ import OrderItem from "./OrderItem";
 
 function Order() {
   const order = useLoaderData();
-  console.log(order, "ORDERRR");
 
   // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
   const {
@@ -42,12 +41,6 @@ function Order() {
         </div>
       </div>
 
-      <ul className="border-t border-b divide-y divide-stone-200">
-        {cart.map((item) => (
-          <OrderItem key={item.pizzaId} item={item} />
-        ))}
-      </ul>
-
       <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-5 bg-stone-200 ">
         <p className="font-medium">
           {deliveryIn >= 0
@@ -58,6 +51,12 @@ function Order() {
           (Estimated delivery: {formatDate(estimatedDelivery)})
         </p>
       </div>
+
+      <ul className="border-t border-b divide-y divide-stone-200">
+        {cart.map((item) => (
+          <OrderItem key={item.pizzaId} item={item} />
+        ))}
+      </ul>
 
       <div className="px-6 py-5 space-y-2 bg-stone-200">
         <p className="text-sm font-medium text-stone-600">
